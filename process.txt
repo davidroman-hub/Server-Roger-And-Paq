@@ -1,0 +1,23 @@
+Aqui voy a poner masomenos lo que voy a hacer en cada una de las
+ circuntancias de poder hacer la autenticacion para la api de Roger
+ and paq.
+
+ primero vamos a utilizar el metodo de apoyo de la clase para poder
+ empezar a desarrollar esta api usando Node js y mongo DB.
+
+- primero hay que recordar quye hay que usar el metodo npm init-y
+para poder sacar el api rest
+- hay que intalar todas estas dependencias que tenemos aqui.
+
+ "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^5.3.1",
+    "express-validator": "^6.3.1", el express validator es una version actual, asi que instalare otra la : 5.3.1 
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.8.3",
+    "morgan": "^1.9.1",
+    "nodemon": "^2.0.2",
+    "uuid": "^3.3.3"
+ 
