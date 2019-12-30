@@ -20,6 +20,8 @@ mongoose.connect(process.env.DATABASE,{
 const userRoutes = require('./Routes/user')
 
 
+
+
 //routes 
 app.get('/', (req,res)=>{
 
@@ -27,7 +29,10 @@ app.get('/', (req,res)=>{
 
 });
 
-app.use('/api', userRoutes)
+//Routes middleware
+
+
+app.use('/api', userRoutes);
 
 
 
