@@ -1,5 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const morgan = require('morgan');
+const bodyParser = require ('body-parser');
+const cookieParser = require ('cookie-parser');
+
 require('dotenv').config();
 
 //app
@@ -23,11 +27,17 @@ const userRoutes = require('./Routes/user')
 
 
 //routes 
-app.get('/', (req,res)=>{
+// app.get('/', (req,res)=>{
 
-    res.send('hello from node ;)')
+//     res.send('hello from node ;)')
 
-});
+// });
+
+//Middlewares
+app.use(morgan('dev'))
+app.use(bodyParser.json())
+app.use(cookieParser())
+
 
 //Routes middleware
 
