@@ -56,7 +56,7 @@ exports.signin = (req, res) => {
 
 };
 
-    //Sigout
+    //Sign Out
 
         exports.signout = (req, res) => {
             res.clearCookie('t')
@@ -64,4 +64,12 @@ exports.signin = (req, res) => {
                 message:' We are outside alfred!! signout Success'
             })
         }
+
+
+    //Require Sign In below
+    
+    exports.requireSignin = expressJwt ({
+        secret: process.env.JWT_SECRET,
+        userProperty: 'auth'
+    });
         
