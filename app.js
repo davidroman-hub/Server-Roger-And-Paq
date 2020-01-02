@@ -22,7 +22,7 @@ mongoose.connect(process.env.DATABASE,{
 .then(()=>console.log('Db Connected'))
 
 //import routes
-const userRoutes = require('./Routes/user')
+const authRoutes = require('./Routes/auth')
 
 
 
@@ -44,7 +44,7 @@ app.use(expressValidator())
 //Routes middleware
 
 
-app.use('/api', userRoutes);
+app.use('/api', authRoutes);
 
 
 

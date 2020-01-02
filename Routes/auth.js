@@ -4,7 +4,14 @@ const router = express.Router()
 // router.get('/', (req,res) => {
 //     res.send('hello from  routes')
 // } )
-const { signup, signin,signout, requireSignin } = require('../controllers/user')
+const { 
+    
+    signup,
+    signin,
+    signout,
+    requireSignin 
+
+} = require('../controllers/user')
 const { userSignupValidator } = require('../validator')
 
 router.post('/signup',userSignupValidator, signup);
