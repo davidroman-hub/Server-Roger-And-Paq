@@ -47,11 +47,21 @@ exports.signin = (req, res) => {
 
         const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET)
             //  Persist the token as 'T' in cookien with expiry date
-        res.cookie('t',token,{expire:new Date() + 9999})
+        res.cookie('t',token,{expire:new Date() + 9999})//<--- we have to clean this cookie for Signout
 
             // Return response with user and token to front End Client
-        const{_id, name, role} = user 
-        return res.json({token, user:{_id, email, name, role} }) 
+                const{_id, name, role} = user 
+                return res.json({token, user:{_id, email, name, role} }) 
     });
 
 };
+
+    //Sigout
+
+        exports.signout = (req, res) => {
+            res.clearCookie('t')
+            res.json({
+                message:' We are outside alfred!! signout Success'
+            })
+        }
+        
