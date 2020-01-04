@@ -73,3 +73,17 @@ exports.signin = (req, res) => {
         userProperty: 'auth'
     });
         
+
+    // Create the middlewares for none can check the status from someone else
+    // only if if Admin wiht a diferent Role, but hte user can check his own profile.\
+    
+
+    exports.isAuth = (req, res, next) =>{
+        let user = req.profile && req.auth && req.profile._id == req.auth._id
+            if(!user){
+                return res.status(403).json({
+                    error:'Access Denied'
+                })
+            }
+            next()
+    }
