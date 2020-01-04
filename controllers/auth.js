@@ -87,3 +87,14 @@ exports.signin = (req, res) => {
             }
             next()
     }
+    // Admin from the resources have to be diferent rol for check
+
+    exports.isAdmin = (req,res, next) => {
+        if(req.profile.role === 0 ){
+            return res.status(403).json({
+                error:'Admin resource! Access Denied'
+            })
+        }
+        next(
+        )
+    }
