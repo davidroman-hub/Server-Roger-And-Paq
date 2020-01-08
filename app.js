@@ -23,7 +23,8 @@ mongoose.connect(process.env.DATABASE,{
 
 //import routes
 const authRoutes = require('./Routes/auth');
-const userRoutes = require('./Routes/user')
+const userRoutes = require('./Routes/user');
+const categoryRoutes = require('./Routes/category');
 
 
 
@@ -46,7 +47,8 @@ app.use(expressValidator())
 
 
 app.use('/api', authRoutes);
-app.use('/api',userRoutes)
+app.use('/api',userRoutes);
+app.use('/api', categoryRoutes);
 
 
 
