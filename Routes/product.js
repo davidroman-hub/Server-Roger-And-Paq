@@ -8,7 +8,10 @@ const { create,
     update,
     list,
     listRelated,
-    listCategories} 
+    listCategories,
+    listBySearch
+
+} 
     
     = require ('../controllers/product');
 
@@ -27,7 +30,7 @@ router.put('/product/:productId/:userId', requireSignin,isAdmin,isAuth,update)
 router.get('/products', list)
 router.get('/products/related/:productId', listRelated)
 router.get('/products/categories', listCategories)
-
+router.post('/products/by/search', listBySearch)
 
 
 router.param("userId", userById);
