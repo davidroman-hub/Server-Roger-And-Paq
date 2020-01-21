@@ -136,19 +136,19 @@ const {name,description, price,category, shipping,quantity} = fields
 
 /* we want to  return the product  
 
-  by sell  /products?sortBy=sold&order=desc&limit=4
-
- by arrival /products?sortBy=createAt&order=desc&limit=4
+  by sell  /products?sortBy=sold&order=desc&limit=4  /// method for see how many we sold
+  by arrival /products?sortBy=createAt&order=desc&limit=4 //
 
  if the parants are not send, then all the products are returned
 
+ Remember, if we only want to know the products list you can only use the route : http://localhost:8000/api/products
 
 */
 
 exports.list = (req, res) => { 
     let order = req.query.order ? req.query.order : 'asc'
     let sortBy = req.query.sortBy ? req.query.sortBy : '_id'
-    let limit = req.query.limit ? req.query.limit : 6
+    let limit = req.query.limit ? parseInt(req.query.limit) : 6
 
     Product.find()
         .select("-photo")
@@ -166,5 +166,36 @@ exports.list = (req, res) => {
 
 } 
 
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/**
+ * the next method it will for find the products based with req product category
+ * other products that has the same category, will be returned
+ * 
+ */
+
+ exports.listRelated = (req, res) => {
+     let limit = req.query.limit ? parseInt(req.query.limit): 6 ;
+//we need to create a method to find the related categories  from the product so,
+//if we gonna use a product to find the related products we can't  use the same product.(not including it self)
+    Product.find({
+    _id:{$ne: req.product},
+    category:req.product.category })
+
+    .limit(limit)
+    .populate('category', '_id name')
+    .exec((err, products) => {
+        if(err){
+            return res.status(400).json({
+                error:"Products not found"
+            })
+        }
+        res.json(products)
+    })
+
+ }
 
 
