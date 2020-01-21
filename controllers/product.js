@@ -270,3 +270,18 @@ exports.listBySearch = (req, res) => {
             });
         });
 }; 
+
+/**
+ * For visualizing the photos in the web-browser we need to use :
+ * http://localhost:8000/api/product/photo/5e25d6f4159d2428ec504517 
+ *                                          this is the id remember
+ */
+
+
+ exports.photo = (req, res) => { 
+     if(req.product.photo.data){
+         res.set('Content-Type', req.product.contentType)
+         return res.send(req.product.photo.data)
+     }
+     next()
+ }
