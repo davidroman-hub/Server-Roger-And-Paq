@@ -199,3 +199,15 @@ exports.list = (req, res) => {
  }
 
 
+/// list Products /// 
+
+exports.listCategories = (req, res) => {
+    Product.distinct("category", {}, (err, catefories) =>{
+        if(err){
+            return res.status(400).json({
+                error: " Category not found"
+            })
+        }
+        res.json(categories)
+    })
+}
